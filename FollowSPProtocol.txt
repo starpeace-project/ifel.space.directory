@@ -1,0 +1,801 @@
+LOGIN VIA CLIENT - CALLS ARE MADE TO DIRECTORY SERVER
+
+C 0 idof "DirectoryServer";A0 objid="39685688";
+C 1 sel 39685688 get RDOOpenSession;A1 RDOOpenSession="#165267116";
+C 2 sel 165267116 call RDOMapSegaUser "^" "%dodgerid";A2 res="%";
+C 3 sel 165267116 call RDOLogonUser "^" "%dodgerid","%NAHMATE";A3 res="#0";
+C 4 sel 165267116 call RDOEndSession "*" ;A4 ;
+
+VIEWING FREE AREA TAB IN CLIENT
+
+C 5 idof "DirectoryServer";A5 objid="39685688";
+C 7 sel 39685688 get RDOOpenSession;A7 RDOOpenSession="#165268780";
+C 9 sel 165268780 call RDOQueryKey "^" "%Root/Areas/America/Worlds","%General/Population
+General/Investors
+General/Online
+General/Date
+Interface/IP
+Interface/Port
+Interface/URL
+Interface/Running
+";A9 res="%Count=1
+Key0=zorcon
+general/date0=2016
+general/investors0=18
+general/online0=3
+general/population0=5997885
+interface/ip0=zorcon.starpeaceonline.com
+interface/port0=8000
+interface/running0=true
+interface/url0=http://zorcon.starpeaceonline.com/Five/
+";
+C 12 sel 165268780 call RDOEndSession "*" ;A12 ;
+
+VIEWING SUBSCRIBER AREA TAB
+
+C 13 idof "DirectoryServer";A13 objid="39685688";
+C 14 sel 39685688 get RDOOpenSession;A14 RDOOpenSession="#170661712";
+C 15 sel 170661712 call RDOQueryKey "^" "%Root/Areas/Europe/Worlds","%General/Population
+General/Investors
+General/Online
+General/Date
+Interface/IP
+Interface/Port
+Interface/URL
+Interface/Running
+";A15 res="%Count=4
+Key0=angelicus
+general/date0=2630
+general/investors0=15
+general/online0=1
+general/population0=47847803
+interface/ip0=angelicus.starpeaceonline.com
+interface/port0=8300
+interface/running0=true
+interface/url0=http://angelicus.starpeaceonline.com/five/
+Key1=darkadia
+general/date1=2059
+general/investors1=11
+general/online1=1
+general/population1=1629742
+interface/ip1=78.46.87.219
+interface/port1=8000
+interface/running1=false
+interface/url1=http://78.46.87.209/Five/
+Key2=pathran
+general/date2=2034
+general/investors2=15
+general/online2=2
+general/population2=4047755
+interface/ip2=willow.starpeaceonline.com
+interface/port2=8000
+interface/running2=false
+interface/url2=http://willow.starpeaceonline.com/Five/
+Key3=xalion
+general/date3=2332
+general/investors3=17
+general/online3=2
+general/population3=15999769
+interface/ip3=xalion.starpeaceonline.com
+interface/port3=8200
+interface/running3=true
+interface/url3=http://xalion.starpeaceonline.com:81/FIVE/
+";
+C 16 sel 170661712 call RDOEndSession "*" ;A16 ;
+
+VIEWING BETA AREA TAB
+
+C 17 idof "DirectoryServer";A17 objid="39685688";
+C 18 sel 39685688 get RDOOpenSession;A18 RDOOpenSession="#165270148";
+C 19 sel 165270148 call RDOQueryKey "^" "%Root/Areas/Asia/Worlds","%General/Population
+General/Investors
+General/Online
+General/Date
+Interface/IP
+Interface/Port
+Interface/URL
+Interface/Running
+";A19 res="%Count=1
+Key0=chipango
+general/date0=2214
+general/investors0=9
+general/online0=1
+general/population0=120445
+interface/ip0=78.46.87.219
+interface/port0=8000
+interface/running0=true
+interface/url0=http://willow.starpeaceonline.com/Five/
+";
+C 20 sel 165270148 call RDOEndSession "*" ;A20 ;
+
+CONNECTING TO THE DIRECTORY SERVER AND OBTAINING ESSENTIAL CLIENT INFORMATION
+
+C 21 idof "InterfaceServer";A21 objid="31287108";
+C 22 sel 31287108 get WorldName;A22 WorldName="$Chipango";
+C 23 sel 31287108 get WorldURL;A23 WorldURL="$http://willow.starpeaceonline.com/Five/";
+C 24 sel 31287108 get DAAddr;A24 DAAddr="$78.46.87.219";
+C 25 sel 31287108 get DALockPort;A25 DALockPort="#7001";
+C 26 sel 31287108 get MailAddr;A26 MailAddr="$78.46.87.219";
+C 27 sel 31287108 get MailPort;A27 MailPort="#10000";
+C 28 sel 31287108 get WorldXSize;A28 WorldXSize="#1000";
+C 29 sel 31287108 get WorldYSize;A29 WorldYSize="#1000";
+C 30 sel 31287108 get WorldSeason;A30 WorldSeason="#3";
+C 31 sel 31287108 call AccountStatus "^" "%dodgerid","%NAHMATE";A31 res="#2";
+C 32 sel 31287108 call Logon "^" "%dodgerid","%NAHMATE";A32 res="#31600636";
+C 33 sel 31600636 get MailAccount;A33 MailAccount="$dodgerid@Chipango.net";
+C 34 sel 31600636 get TycoonId;A34 TycoonId="#35";
+
+"DOING" THE CONNECTION TO THE INTERFACE SERVER
+
+C 35 sel 31600636 get RDOCnntId;A35 RDOCnntId="$31666024";
+C 36 sel 31600636 call RegisterEventsById "^" "#31666024";
+C 55 idof "InterfaceEvents";A55 objid="37839680";A36 res="#0";
+C sel 31600636 call SetLanguage "*" "%0";
+C sel 37839680 call InitClient "*" "@114872","%100000000","#0","#116533876";
+C sel 37839680 call NewMail "*" "#1";C 37 sel 31600636 set EnableEvents="#-1";A37 ;
+C 38 sel 31600636 call GetTycoonCookie "^" "#35","%LastY.0";A38 res="%787";
+C 39 sel 31600636 call GetTycoonCookie "^" "#35","%LastX.0";A39 res="%640";
+C 40 sel 31600636 call GetTycoonCookie "^" "#35","%";A40 res="%LastX.0=640
+LastY.0=787
+";
+C 41 sel 31600636 call PickEvent "^" "#35";A41 res="%";
+C 42 sel 31600636 get ServerBusy;A42 ServerBusy="#0";
+C 43 sel 31600636 call PickEvent "^" "#35";A43 res="%";
+C 44 sel 31600636 call PickEvent "^" "#35";A44 res="%";
+C 45 sel 31600636 call PickEvent "^" "#35";A45 res="%";
+C 46 sel 31600636 call PickEvent "^" "#35";A46 res="%";
+C 47 sel 31600636 call PickEvent "^" "#35";A47 res="%";
+C 48 sel 31600636 get ServerBusy;A48 ServerBusy="#0";
+C sel 31600636 call ClientAware "*" ;
+C sel 37839680 call ChatMsg "*" "%SYSTEM","%dodgerid has entered Chipango";
+C 49 sel 31600636 call GetTycoonCookie "^" "#35","%";
+C sel 31600636 call ClientAware "*" ;
+C sel 31600636 call SetViewedArea "*" "#622","#770","#35","#35";
+C 50 sel 31600636 call ObjectsInArea "^" "#640","#768","#64","#64";A49 res="%LastX.0=640
+LastY.0=787
+";A50 res="%4692
+30
+17
+640
+779
+4702
+30
+17
+640
+781
+3510
+0
+16
+640
+783
+3500
+18
+16
+640
+787
+2852
+18
+17
+683
+807
+2852
+18
+17
+690
+807
+2852
+18
+17
+698
+829";
+C sel 31600636 call MsgCompositionChanged "*" "#0";
+C sel 31600636 call SetViewedArea "*" "#622","#770","#35","#35";
+C 51 sel 31600636 call SegmentsInArea "^" "#1","#639","#767","#705","#833";
+C sel 37839680 call NotifyMsgCompositionState "*" "%dodgerid","#0";A51 res="%639
+783
+639
+786
+35
+36
+0
+0
+0
+0
+639
+786
+645
+786
+36
+60
+0
+0
+0
+0
+639
+786
+639
+794
+36
+36
+0
+0
+0
+0
+639
+651
+639
+783
+-54
+35
+7
+0
+0
+0
+645
+786
+673
+786
+60
+90
+0
+-1
+0
+0
+673
+782
+673
+785
+86
+87
+-1
+-1
+0
+0
+673
+786
+673
+849
+90
+76
+-1
+-2
+0
+0
+673
+785
+673
+786
+87
+90
+-1
+-1
+0
+0
+673
+782
+743
+782
+86
+99
+-1
+-1
+0
+0
+697
+791
+719
+791
+110
+122
+-2
+-2
+0
+0
+673
+785
+676
+785
+87
+88
+-1
+-1
+0
+0
+676
+785
+740
+785
+88
+101
+-1
+-1
+0
+0
+676
+785
+676
+791
+88
+96
+-1
+-2
+0
+0
+676
+791
+676
+843
+96
+81
+-2
+-3
+0
+0
+676
+791
+682
+791
+96
+100
+-2
+-2
+0
+0
+682
+791
+682
+806
+100
+103
+-2
+-6
+0
+0
+682
+791
+697
+791
+100
+110
+-2
+-2
+0
+0
+697
+791
+697
+806
+110
+114
+-2
+-6
+0
+0
+697
+828
+719
+828
+101
+112
+-5
+-6
+0
+0
+697
+806
+719
+806
+114
+126
+-6
+-8
+0
+0
+697
+806
+697
+828
+114
+101
+-6
+-5
+0
+0
+682
+806
+697
+806
+103
+114
+-6
+-6
+0
+0
+697
+828
+697
+843
+101
+93
+-5
+-4
+0
+0
+682
+828
+697
+828
+92
+101
+-4
+-5
+0
+0
+682
+828
+682
+843
+92
+84
+-4
+-3
+0
+0
+682
+806
+682
+828
+103
+92
+-6
+-4
+0
+0
+594
+786
+639
+786
+85
+36
+0
+0
+0
+0
+";
+C 52 sel 31600636 call ObjectsInArea "^" "#576","#768","#64","#64";A52 res="%2852
+18
+17
+580
+769
+2852
+18
+17
+587
+776
+3822
+18
+17
+601
+787
+1722
+28
+16
+634
+784
+6032
+0
+16
+635
+787
+1772
+28
+17
+636
+782
+1782
+28
+16
+636
+784
+1752
+28
+17
+638
+782
+1762
+28
+17
+638
+783
+1732
+28
+17
+638
+784
+1712
+28
+16
+638
+785
+4692
+30
+17
+640
+779
+4702
+30
+17
+640
+781
+3510
+0
+16
+640
+783
+3500
+18
+16
+640
+787";
+C 53 sel 31600636 call SegmentsInArea "^" "#1","#575","#767","#641","#833";A53 res="%639
+783
+639
+786
+35
+36
+0
+0
+0
+0
+639
+786
+645
+786
+36
+60
+0
+0
+0
+0
+639
+786
+639
+794
+36
+36
+0
+0
+0
+0
+639
+651
+639
+783
+-54
+35
+7
+0
+0
+0
+579
+784
+579
+786
+115
+111
+0
+0
+0
+0
+574
+784
+579
+784
+125
+115
+0
+0
+0
+0
+579
+786
+579
+789
+111
+101
+0
+0
+0
+0
+574
+789
+579
+789
+109
+101
+0
+0
+0
+0
+594
+786
+639
+786
+85
+36
+0
+0
+0
+0
+594
+776
+594
+783
+85
+88
+0
+0
+0
+0
+579
+772
+579
+783
+107
+114
+0
+0
+0
+0
+579
+789
+579
+804
+101
+99
+0
+-4
+0
+0
+594
+783
+594
+786
+88
+85
+0
+0
+0
+0
+579
+783
+579
+784
+114
+115
+0
+0
+0
+0
+579
+783
+594
+783
+114
+88
+0
+0
+0
+0
+594
+786
+594
+797
+85
+76
+0
+-2
+0
+0
+";
+C sel 37839680 call ShowNotification "*" "#1","%","%http://willow.starpeaceonline.com/Five//0/Visual/Voyager/NewTycoon/Tasks/Tutorial/0/default.asp?Tycoon=dodgerid&WorldName=Chipango","#4";
+C sel 37839680 call RefreshTycoon "*" "%100000000","%0","#0","#0","#50";
+C 54 sel 31600636 get ServerBusy;A54 ServerBusy="#0";
+C 55 sel 31600636 get ServerBusy;A55 ServerBusy="#0";
+C sel 31600636 call SetViewedArea "*" "#612","#760","#35","#35";
+C 56 sel 31600636 call ObjectsInArea "^" "#640","#704","#64","#64";A56 res="%";
+C 57 sel 31600636 call SegmentsInArea "^" "#1","#639","#703","#705","#769";
+C 58 sel 31600636 get ServerBusy;A57 res="%639
+651
+639
+783
+-54
+35
+7
+0
+0
+0
+";
+C 59 sel 31600636 call ObjectsInArea "^" "#576","#704","#64","#64";A58 ServerBusy="#0";A59 res="%";
+C 60 sel 31600636 call SegmentsInArea "^" "#1","#575","#703","#641","#769";A60 res="%639
+651
+639
+783
+-54
+35
+7
+0
+0
+0
+";
+C 61 sel 31600636 get ServerBusy;A61 ServerBusy="#0";
+C 62 sel 31600636 get ServerBusy;A62 ServerBusy="#0";
+C sel 37839680 call ShowNotification "*" "#1","%Welcome to Starpeace Online Tutorial. In case you close this window you can access this tutorial page from the TUTORIAL button located in the PROFILE 
+page.","%http://willow.starpeaceonline.com/Five//0/Visual/Voyager/NewTycoon/Tasks/Welcome/0/default.asp?Tycoon=dodgerid&WorldName=Chipango","#4";
+C sel 37839680 call RefreshArea "*" "#635","#787","#4","#4","%1:6031
+0
+16
+635
+787:639
+786
+639
+794
+36
+36
+0
+0
+0
+0
+:";
+C sel 37839680 call RefreshTycoon "*" "%100000000","%0","#0","#0","#50";C 63 sel 31600636 call ObjectsInArea "^" "#635","#787","#5","#5";A63 res="%6031
+0
+16
+635
+787
+3500
+18
+16
+640
+787";
+C 64 sel 31600636 call SegmentsInArea "^" "#1","#634","#786","#641","#793";A64 res="%639
+783
+639
+786
+35
+36
+0
+0
+0
+0
+639
+786
+645
+786
+36
+60
+0
+0
+0
+0
+639
+786
+639
+794
+36
+36
+0
+0
+0
+0
+594
+786
+639
+786
+85
+36
+0
+0
+0
+0
+";
+C 65 sel 31600636 get ServerBusy;A65 ServerBusy="#0";
