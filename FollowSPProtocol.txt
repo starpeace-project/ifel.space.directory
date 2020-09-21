@@ -132,7 +132,8 @@ C 36 sel 31600636 call RegisterEventsById "^" "#31666024";
 C 55 idof "InterfaceEvents";A55 objid="37839680";A36 res="#0";
 C sel 31600636 call SetLanguage "*" "%0";
 C sel 37839680 call InitClient "*" "@114872","%100000000","#0","#116533876";
-C sel 37839680 call NewMail "*" "#1";C 37 sel 31600636 set EnableEvents="#-1";A37 ;
+C sel 37839680 call NewMail "*" "#1";
+C 37 sel 31600636 set EnableEvents="#-1";A37 ;
 C 38 sel 31600636 call GetTycoonCookie "^" "#35","%LastY.0";A38 res="%787";
 C 39 sel 31600636 call GetTycoonCookie "^" "#35","%LastX.0";A39 res="%640";
 C 40 sel 31600636 call GetTycoonCookie "^" "#35","%";A40 res="%LastX.0=640
